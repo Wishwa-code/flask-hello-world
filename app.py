@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
@@ -25,3 +25,8 @@ except ServerSelectionTimeoutError as e:
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
+
+
+@app.route('/ping')
+def test_api():
+    return jsonify(message="Pong"), 200
